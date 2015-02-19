@@ -71,7 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 holder.itemView.setLayoutParams(lp);
                 break;
             case NAVIGATION:
-                lp.layoutId = isList?0:1;
+                lp.layoutId = isList ? 0 : 1;
                 lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
@@ -129,7 +129,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = true;
-                    recyclerView.requestLayout();;
+                    recyclerView.requestLayout();
                 }
             });
 
@@ -137,7 +137,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = false;
-                    recyclerView.requestLayout();;
+                    recyclerView.requestLayout();
                 }
             });
         }
