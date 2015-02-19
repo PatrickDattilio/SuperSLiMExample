@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@android:color/holo_green_dark"
+              app:slm_headerDisplay="inline|sticky"
+              app:slm_isHeader="true"
+              android:weightSum="2">
+
+    <Button
+        style="?android:borderlessButtonStyle"
+        android:id="@+id/navigation_list"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:layout_weight="1"
+        android:text="List"/>
+
+    <Button
+        style="?android:borderlessButtonStyle"
+        android:id="@+id/navigation_grid"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:layout_weight="1"
+        android:text="Grid"/>
+</LinearLayout>
