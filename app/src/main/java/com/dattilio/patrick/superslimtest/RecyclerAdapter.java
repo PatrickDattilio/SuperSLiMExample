@@ -87,7 +87,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
             case GRID_ITEM:
                 lp.layoutId = 1;
-                lp.setFirstPosition(2);
+                lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
         }
@@ -129,7 +129,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = true;
-                    recyclerView.requestLayout();
+                    notifyItemRangeChanged(1, getItemCount - 1)
                 }
             });
 
@@ -137,7 +137,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = false;
-                    recyclerView.requestLayout();
+                    notifyItemRangeChanged(1, getItemCount - 1)
                 }
             });
         }
