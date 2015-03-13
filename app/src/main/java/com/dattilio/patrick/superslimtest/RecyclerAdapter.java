@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.tonicartos.superslim.GridSLM;
 import com.tonicartos.superslim.LayoutManager;
+import com.tonicartos.superslim.LinearSLM;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,32 +64,34 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final LayoutManager.LayoutParams lp = (LayoutManager.LayoutParams) holder.itemView.getLayoutParams();
+        final GridSLM.LayoutParams lp = new GridSLM.LayoutParams(
+                holder.itemView.getLayoutParams());
+        lp.setNumColumns(3);
         int type = getItemViewType(position);
         switch (type) {
             case TOP:
-                lp.layoutId = 0;
+                lp.setSlm(LinearSLM.ID);
                 lp.setFirstPosition(0);
                 holder.itemView.setLayoutParams(lp);
                 break;
             case NAVIGATION:
-                lp.layoutId = isList ? 0 : 1;
+                lp.setSlm(isList ? LinearSLM.ID : GridSLM.ID);
                 lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
             case LIST_HEADER:
-                lp.layoutId = 0;
+                lp.setSlm(LinearSLM.ID);
                 lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
             case LIST_ITEM:
-                lp.layoutId = 0;
+                lp.setSlm(LinearSLM.ID);
                 lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
             case GRID_ITEM:
-                lp.layoutId = 1;
-                lp.setFirstPosition(2);
+                lp.setSlm(LinearSLM.ID);
+                lp.setFirstPosition(1);
                 holder.itemView.setLayoutParams(lp);
                 break;
         }
@@ -129,7 +133,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = true;
-                    recyclerView.requestLayout();
+                    notifyItemRangeChanged(1, getItemCount() - 1);
                 }
             });
 
@@ -137,7 +141,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     isList = false;
-                    recyclerView.requestLayout();
+                    notifyItemRangeChanged(1, getItemCount() - 1);
                 }
             });
         }

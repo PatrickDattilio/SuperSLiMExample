@@ -1,20 +1,16 @@
 package com.dattilio.patrick.superslimtest;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
-import com.tonicartos.superslim.GridSectionLayoutManager;
 import com.tonicartos.superslim.LayoutManager;
-import com.tonicartos.superslim.LinearSectionLayoutManager;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -59,18 +55,9 @@ public class MainActivity extends ActionBarActivity {
     public static class PlaceholderFragment extends Fragment {
 
         private final LayoutManager layoutManager;
-        private final LinearSectionLayoutManager headerManager;
-        private final LinearSectionLayoutManager navBarManager;
-        private final GridSectionLayoutManager gridManager;
 
         public PlaceholderFragment() {
-            layoutManager = new LayoutManager();
-            headerManager = new LinearSectionLayoutManager(layoutManager);
-            layoutManager.registerSectionLayoutManager(0, headerManager);
-            navBarManager = new LinearSectionLayoutManager(layoutManager);
-            gridManager = new GridSectionLayoutManager(layoutManager, getActivity());
-            gridManager.setNumColumns(3);
-            layoutManager.registerSectionLayoutManager(1, gridManager);
+            layoutManager = new LayoutManager(getActivity());
         }
 
 
@@ -80,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
             recyclerView.setLayoutManager(layoutManager);
-            RecyclerAdapter adapter = new RecyclerAdapter(getActivity(),recyclerView);
+            RecyclerAdapter adapter = new RecyclerAdapter(getActivity(), recyclerView);
             recyclerView.setAdapter(adapter);
             return rootView;
         }
