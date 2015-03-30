@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.tonicartos.superslim.GridSLM;
-import com.tonicartos.superslim.LayoutManager;
 import com.tonicartos.superslim.LinearSLM;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by pat on 2/18/15.
@@ -20,8 +18,7 @@ import java.util.Arrays;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
     private final RecyclerView recyclerView;
-    String[] testData = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-    ArrayList<String> data = new ArrayList<>(Arrays.asList(testData));
+    ArrayList<String> data = new ArrayList<>();
     boolean isList = true;
 
     private static final int TOP = 0;
@@ -99,7 +96,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        return 11;
+        return 2;
     }
 
     @Override
